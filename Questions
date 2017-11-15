@@ -80,6 +80,18 @@ mrbayes/3.2.5
 
 15. Look through and try to understand the example SLURM submission script I am providing on Blackboard. Do you have any suggestions for improvement? I
 
+- mkdir -p $INDIR 
+(input directory generieren, wenn es nicht existiert, wenn sie ex, mach weiter)
+ansonsten ensteht es, als alles schon läuft
+
+- bayes kann schon früher geladen werden vor INDIR=/scratch/username/2017.05.12/
+
+- überprüfen, ob mb-parallel überhaupt existiert
+
+- mkdir -p output/
+cleans scratch and transfers all data to home
+
+
 16. Check the number of CPUs used when executing jModeltest on its test data on /home (see next lecture).
 
 17. How many MB of memory did the execution of jModeltest need?
