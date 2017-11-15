@@ -1,0 +1,159 @@
+1. In which user group are you on Soroban? 
+
+Eine Datei erstellen
+ls -alh
+
+groups
+
+
+2. Next to root, how many different user groups exist on Soroban?
+
+ls /scratch/ |sort – u / wc -l
+
+
+3. s the number of user groups in /home and in /scratch identical?
+
+ls /scratch/ |sort – u / wc -l - 444
+ls /home/ |sort – u / wc -l    - 445
+
+4. Set up an alias that all file removal must first be prompted.
+
+alias rm=”rm -i”
+
+5. What command (including the correct option) would I use to remove all linebreaks from a variable (VAR1) that contains a multi-line string? 
+
+echo "|$COMMAND|"|tr '\n' ' '
+
+-tr 
+
+
+6. What filetype is the command file?
+
+file filename
+
+which file    →       /usr/bin/file
+echo -e $(echo “hello\nworld”)
+file $(which file)
+????????????????????????????????
+
+process id abgeben, wie viel RAM, CPU
+echo $! 
+
+standard input, ouput, error
+ versteckte Dateien beginnen mit einem Punkt
+
+6. Echo the string ” Hello World!“ so that the two words printed on different lines; save this multi-line string to variable VAR1. 
+VAR1=’Hello\World!’
+echo -e “SVAR1”
+7. Echo variable VAR1 and remove the line breaks through piping it to another command.
+echo -e “$VAR1” | tr ‘\n’  ’ ’
+
+
+8. How can you append a line to the last line of a file (i.e., without appending it as a new line)?
+
+VAR1=”${VAR1}\n”
+
+9. Can you append to a file that does not even exist yet? Thus: What is safer: Passing output by default or appending output by default? 
+
+Ja:
+echo -e “\n” >> notexisting
+cat notexisting
+
+10. Can you pass output to a variable? If so, how? I
+output=$(expression)
+z.B. output=$(date)
+
+11. Set your bash such that the history is saved to a file with the date in the filename upon logout.
+
+history > history_for_print.txt
+
+12. Please find the latest module for the software ’MrBayes’ I
+
+module avail mrbayes
+mrbayes/3.2.5
+
+13. What is the difference between adding and loading a module? 
+
+
+14. Which of the two commands (module load and module add) is more helpful, especially if you don’t remember whether a module has already been loaded? I
+
+
+15. Look through and try to understand the example SLURM submission script I am providing on Blackboard. Do you have any suggestions for improvement? I
+
+16. Check the number of CPUs used when executing jModeltest on its test data on /home (see next lecture).
+
+17. How many MB of memory did the execution of jModeltest need?
+
+18. How many MB of memory did the execution of sms need?
+
+19. Did the measruing of memory usage work?
+
+20. Is there something strange?
+
+21. What was the best-fitting nucleotide substitution model for each dataset / modeltesting software? 
+
+22. Which of the three modeltesting software tools requires the least amount of memory?
+
+23. Why is that comparison flawed?
+
+Exercise I
+Test a MrBayes analysis on /home I
+
+Identify the module of the most recent version of MrBayes and load its module. I
+
+Test if the input file (a NEXUS file) can be executed with MrBayes. 
+
+Run a few MCMC generations on /home. 
+
+If test was successful: Estimate time, memory and number of CPUs required for a full analysis involving 20.000.000 generations. 
+
+Unload the module again.
+
+
+
+Start a MrBayes analysis on /scratch using the queueing system 
+
+Set up a batch file using the above estimates of time, memory and number of CPUs; use Michael’s MrBayes batch file as a template. 
+
+In the batch file, make sure that the MrBayes module is loaded. 
+
+Make the temporary folder on /scratch and copy the infile into it as specified in the batch file. 
+
+Submit the batch file (sbatch batch file) and monitor the queue (squeue -u $USER).
+ 
+
+Exercise II
+
+Test PartitionFinder2 on /home 
+
+Load the module for PartitionFinder2; it is a Python package. 
+
+Test the software PartitionFinder2 on /home, using its own example data (examples/nucleotide/test.phy) 
+
+If test data is not available on Soroban, get it from the software’s GitHub account (https://github.com/brettc/partitionfinder).
+
+
+
+
+Test PartitionTest on /home 
+
+Load the module for PartitionTest; it is a compiled executable. 
+
+Test the software PartitionTest on /home, using its own example data (examples/DNA/test.phy). 
+
+If test data is not available on Soroban, get it from the software’s GitHub account (https://github.com/ddarriba/partitiontest).
+
+
+
+Test partitNex2MrBayes on /home I
+
+Clone the GitHub directory of partitNex2MrBayes (https://github.com/michaelgruenstaeudl/ partitionedNex2MrBayes) to your local harddrive. 
+
+SFTP the directory to Soroban; it may be easier to transfer a compressed tar archive of the directory. 
+
+Use the example file testing.nex and execute partitNex2MrBayes on /home.
+
+
+Set up a batch file for partitNex2MrBayes
+
+Start an analysis with partitNex2MrBayes on /scratch
